@@ -1,0 +1,67 @@
+/* General styling for the root */
+.root {
+    -fx-background-color: #000000; /* Black background */
+    -fx-font-family: "Arial";
+    -fx-padding: 20px;
+}
+
+/* Style for the login title */
+.label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FF0000; /* Bright red text for the title */
+    -fx-alignment: center;
+    -fx-padding: 10px 0;
+}
+
+/* Style for text fields */
+.text-field {
+    -fx-prompt-text-fill: #FF8888; /* Light red for placeholder text */
+    -fx-text-fill: #FFFFFF; /* White text input */
+    -fx-background-color: transparent;
+    -fx-border-color: #FF0000; /* Red border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Style for the login button */
+.button {
+    -fx-background-color: #FF0000; /* Red background */
+    -fx-text-fill: #FFFFFF;        /* White text */
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255,0,0,0.5), 10, 0.5, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #CC0000; /* Darker red on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #990000; /* Even darker red on press */
+}
+
+/* Style for the "Register" button */
+.button.register {
+    -fx-background-color: #FF4444; /* Bright red for register button */
+    -fx-text-fill: #FFFFFF;
+}
+
+.button.register:hover {
+    -fx-background-color: #CC3333; /* Slightly darker red on hover */
+}
+
+.button.register:pressed {
+    -fx-background-color: #AA2222; /* Dark red on press */
+}
+
+/* Optional: Add a separator line style */
+.separator {
+    -fx-background-color: #FF0000; /* Red line color */
+    -fx-padding: 5px;
+}
