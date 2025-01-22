@@ -1,5 +1,6 @@
 package Orders;
 
+import Controller.DBconnection;
 import Controller.ItemController;
 import customer.Customer;
 import customer.Customer_Controller;
@@ -16,10 +17,15 @@ import javafx.util.Duration;
 import modle.Items;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.BreakIterator;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Order_Form implements Initializable {
@@ -40,6 +46,8 @@ public class Order_Form implements Initializable {
     public TableColumn col_qty;
     public TableColumn colum_unitprice;
     public TableColumn colum_total;
+    public TextField txt_tqqq;
+    public TextField txt_orid;
 
 
     @Override
@@ -56,20 +64,21 @@ public class Order_Form implements Initializable {
         setCustomerid();
         setItemid();
         combo_order_id.getSelectionModel().selectedItemProperty().addListener((observableValue, ol, t1) -> {
-            if(t1 !=null){
-                setCustomerData((String)t1);
+            if (t1 != null) {
+                setCustomerData((String) t1);
                 System.out.println(t1);
             }
         });
         combo_item_id.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
-            if (t1 !=null){
+            if (t1 != null) {
                 setitemsData((String) t1);
                 System.out.println(t1);
             }
         });
 
     }
-    private void loadDateAndTime(){
+
+    private void loadDateAndTime() {
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         BreakIterator lblDate;
@@ -87,10 +96,10 @@ public class Order_Form implements Initializable {
 
     }
 
-    public  void  setCustomerid(){
-        ObservableList<String>customerobserverlist= FXCollections.observableArrayList();
+    public void setCustomerid() {
+        ObservableList<String> customerobserverlist = FXCollections.observableArrayList();
 
-        for (Customer customer :Customer_Controller.getInstance().getAll()){
+        for (Customer customer : Customer_Controller.getInstance().getAll()) {
             customerobserverlist.add(customer.getId());
         }
 
@@ -98,59 +107,119 @@ public class Order_Form implements Initializable {
 
 
     }
-    ObservableList<CarTm>carTmObservableList=FXCollections.observableArrayList();
+
+    ObservableList<CarTm> carTmObservableList = FXCollections.observableArrayList();
 
     public void Add_Task_on_Action(ActionEvent actionEvent) {
-        Double total=Double.parseDouble(txt_unite_price.getText())*Integer.parseInt(txt_qty.getText());
-            carTmObservableList.add(
+        Double total = Double.parseDouble(txt_unite_price.getText()) * Integer.parseInt(txt_qty.getText());
+        carTmObservableList.add(
                 new CarTm(
-                    combo_item_id.getValue().toString(),
-                     txt_description.getText(),
-                       Integer.parseInt(txt_qty.getText()),
+                        combo_item_id.getValue().toString(),
+                        txt_description.getText(),
+                        Integer.parseInt(txt_tqqq.getText()),
                         Double.parseDouble(txt_unite_price.getText()),
                         total
 
+
                 )
-            );
-            tbl_card.setItems(carTmObservableList);
-            calacNetTotal();
+        );
+        tbl_card.setItems(carTmObservableList);
+        calacNetTotal();
+        combo_order_id.setDisable(true);
     }
-    private void calacNetTotal(){
-        Double netTotal=0.0;
-        for (CarTm cartTM: carTmObservableList){
-            netTotal+=cartTM.getTotal();
+
+    private void calacNetTotal() {
+        Double netTotal = 0.0;
+        for (CarTm cartTM : carTmObservableList) {
+            netTotal += cartTM.getTotal();
         }
         lbl_total.setText(netTotal.toString());
     }
-        
-    
 
 
-
-    public  void  setItemid(){
-        ObservableList<String>Iitemobserverlist=FXCollections.observableArrayList();
+    public void setItemid() {
+        ObservableList<String> Iitemobserverlist = FXCollections.observableArrayList();
         for (Items items : ItemController.getInstance().getAll()) {
             Iitemobserverlist.add(items.getCode());
         }
         combo_item_id.setItems(Iitemobserverlist);
-        }
-        private  void setCustomerData(String id){
-        Customer customer=Customer_Controller.getInstance().searchItem(id);
+    }
+
+    private void setCustomerData(String id) {
+        Customer customer = Customer_Controller.getInstance().searchItem(id);
         txt_Adrees.setText(customer.getAdress());
         txt_Salary.setText(customer.getSalary().toString());
 
 
-        }
-        private  void  setitemsData(String code){
-        Items items=ItemController.getInstance().searchItem(code);
+    }
+
+    private void setitemsData(String code) {
+        Items items = ItemController.getInstance().searchItem(code);
         txt_description.setText(items.getDescription());
         txt_unite_price.setText(String.valueOf(items.getUnitprice()));
         txt_qty.setText(String.valueOf(items.getQtyonHand()));
 
 
-        }
+    }
 
 
+    public void Add_Task_Action(ActionEvent actionEvent) {
 
     }
+
+    public void btn_Place_order_Action(ActionEvent actionEvent) throws SQLException {
+
+            Connection connection = DBconnection.getInstance().getConnection();
+
+
+            String orderQuery = "INSERT INTO orders (id, date, customerId) VALUES (?, ?, ?)";
+
+
+        try{
+            connection.setAutoCommit(false);
+            try {
+                PreparedStatement orderStatement = connection.prepareStatement(orderQuery);
+                orderStatement.setString(1, txt_orid.getText());
+                orderStatement.setString(2, lbl_id.getText());
+                orderStatement.setString(3, combo_order_id.getValue().toString());
+                orderStatement.executeUpdate();
+
+                ArrayList<OrderDetails> orderDetailList = new ArrayList<>();
+
+                tbl_card.getItems().forEach(o -> {
+                    CarTm item = (CarTm) o;
+
+                    OrderDetails orderDetails = new OrderDetails(
+                            txt_orid.getText(),
+                            item.getItemcode(),
+                            item.getQty(),
+                            item.getUnitprice()
+
+
+                    );
+
+                    orderDetailList.add(orderDetails);
+                });
+
+
+
+                new OrderDetails_Controller().addOrderDetails(orderDetailList);
+
+                new Alert(Alert.AlertType.INFORMATION,"Successes Fully").show();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            connection.rollback();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            connection.setAutoCommit(true);
+        }
+    }
+
+}
+
+
 

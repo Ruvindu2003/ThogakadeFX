@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="622.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Orders.Order_Form">
+<AnchorPane fx:id="txt_oid" prefHeight="622.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Orders.Order_Form">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff981f" height="121.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="690.0" />
       <Label layoutX="150.0" layoutY="14.0" prefHeight="83.0" prefWidth="360.0" text="Order Form">
@@ -28,14 +28,14 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <ComboBox fx:id="combo_order_id" layoutX="45.0" layoutY="202.0" prefHeight="27.0" prefWidth="146.0" promptText="Order id" />
-      <Button layoutX="515.0" layoutY="321.0" mnemonicParsing="false" onAction="#Add_Task_on_Action" prefHeight="26.0" prefWidth="76.0" text="Add Task" />
+      <ComboBox fx:id="combo_order_id" layoutX="17.0" layoutY="203.0" prefHeight="27.0" prefWidth="146.0" promptText="Customer id" />
+      <Button layoutX="426.0" layoutY="568.0" mnemonicParsing="false" onAction="#Add_Task_on_Action" prefHeight="26.0" prefWidth="76.0" text="Add Task" />
       <TextField fx:id="txt_Adrees" layoutX="243.0" layoutY="203.0" prefHeight="26.0" prefWidth="163.0" promptText="Address" />
       <TextField fx:id="txt_Salary" layoutX="436.0" layoutY="204.0" prefHeight="26.0" prefWidth="163.0" promptText="Salary" />
-      <ComboBox fx:id="combo_item_id" layoutX="43.0" layoutY="284.0" prefHeight="26.0" prefWidth="153.0" promptText="Item id" />
-      <TextField fx:id="txt_description" layoutX="242.0" layoutY="284.0" prefHeight="26.0" prefWidth="163.0" promptText="description" />
-      <TextField fx:id="txt_unite_price" layoutX="436.0" layoutY="284.0" prefHeight="26.0" prefWidth="163.0" promptText="Uite_price" />
-      <TextField fx:id="txt_qty" layoutX="243.0" layoutY="321.0" prefHeight="26.0" prefWidth="163.0" promptText="Qty" />
+      <ComboBox fx:id="combo_item_id" layoutX="14.0" layoutY="257.0" prefHeight="26.0" prefWidth="153.0" promptText="Item id" />
+      <TextField fx:id="txt_description" layoutX="194.0" layoutY="257.0" prefHeight="26.0" prefWidth="163.0" promptText="description" />
+      <TextField fx:id="txt_unite_price" layoutX="362.0" layoutY="257.0" prefHeight="26.0" prefWidth="163.0" promptText="Uite_price" />
+      <TextField fx:id="txt_qty" layoutX="526.0" layoutY="257.0" prefHeight="26.0" prefWidth="163.0" promptText="Qty" />
       <TableView fx:id="tbl_card" layoutX="1.0" layoutY="360.0" prefHeight="190.0" prefWidth="696.0">
         <columns>
           <TableColumn fx:id="col_itemcode" prefWidth="172.79998469352722" text="Item code" />
@@ -45,6 +45,12 @@
             <TableColumn fx:id="colum_total" prefWidth="165.60003662109375" text="Total" />
         </columns>
       </TableView>
-      <Label fx:id="lbl_total" layoutX="77.0" layoutY="581.0" prefHeight="18.0" prefWidth="124.0" text="Total" />
+      <Label fx:id="lbl_total" layoutX="44.0" layoutY="572.0" prefHeight="43.0" prefWidth="150.0" text="Total" textFill="#b12626">
+         <font>
+            <Font name="System Bold Italic" size="29.0" />
+         </font></Label>
+      <Button layoutX="564.0" layoutY="568.0" mnemonicParsing="false" onAction="#btn_Place_order_Action" prefHeight="26.0" prefWidth="87.0" text="Place Order" />
+      <TextField fx:id="txt_tqqq" layoutX="389.0" layoutY="322.0" promptText="qty" />
+      <TextField fx:id="txt_orid" layoutX="141.0" layoutY="322.0" promptText="Orderid" />
    </children>
 </AnchorPane>

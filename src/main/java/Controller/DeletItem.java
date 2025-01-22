@@ -26,6 +26,9 @@ public class DeletItem {
 
     @FXML
     void btn_Delete_Items(ActionEvent event)  {
+
+
+
         Connection connection=DBconnection.getInstance().getConnection();
         String SQL="Delete from item  where code =?";
         try {

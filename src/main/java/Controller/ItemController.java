@@ -10,8 +10,6 @@ import modle.Items;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
 public class ItemController implements ItemService {
   private static ItemController itemController;
 
@@ -51,16 +49,8 @@ public class ItemController implements ItemService {
             throw new RuntimeException(e);
         }
 
-
-
-
-
-
-
         return items;
     }
-
-
 
     @Override
     public Items searchItem(String item) {
@@ -86,12 +76,7 @@ public class ItemController implements ItemService {
         }
         return searchItemObject;
 
-
-
-
-
     }
-
     @Override
     public boolean updateItem(Items items) {
 
@@ -116,13 +101,10 @@ public class ItemController implements ItemService {
 
         return false;
     }
-
-
     @Override
     public boolean deleteItem(String code) {
         return false;
     }
-
     @Override
     public void Additems(Items items) {
         

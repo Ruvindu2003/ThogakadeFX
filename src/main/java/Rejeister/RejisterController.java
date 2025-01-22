@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RejisterController  implements  Rejister_service{
+public class RejisterController  implements RegisterService {
     public  static  RejisterController instance;
 
     private  RejisterController (){
