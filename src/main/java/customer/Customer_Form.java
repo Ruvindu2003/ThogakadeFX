@@ -1,7 +1,14 @@
 package customer;
 
-import Controller.DBconnection;
-import javafx.collections.ObservableList;
+import controller.DBconnection;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import service.ServiceFactory;
+import service.custome.CustomeService;
+import Util.Service_Type;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -24,11 +31,11 @@ public class Customer_Form {
     public TableColumn colum_name;
     public TableColumn colum_adrees;
     public TableColumn colum_salary;
-    Customer_Controller customerController=new Customer_Controller();
-
-    public void Add_Customer_Action(ActionEvent actionEvent) {
+    CustomeService customeService=ServiceFactory.getInstance().getServiceType(Service_Type.Customer);
+    public void Add_Customer_Action(ActionEvent zactionEvent) {
         Connection connection= DBconnection.getInstance().getConnection();
-        customerController.Additems(new Customer(
+
+        customeService.Additems(new Customer(
                 lbl_id.getText(),
                 lbl_name.getText(),
                 lbl_customer_Adrees.getText(),
@@ -39,7 +46,7 @@ public class Customer_Form {
 
     public void update_customer_Action(ActionEvent actionEvent) {
 
-        boolean b=customerController.updateItem(new Customer(
+        boolean b=customeService.updateItem(new Customer(
                 lbl_id.getText(),
                 lbl_name.getText(),
                 lbl_customer_Adrees.getText(),
@@ -52,7 +59,7 @@ public class Customer_Form {
     public void search_Customer_Action(ActionEvent actionEvent) {
 
 
-        Customer customer=customerController.searchItem(lbl_id.getText());
+        Customer customer=customeService.searchItem(lbl_id.getText());
         if (customer!=null){
 
         }
@@ -97,7 +104,20 @@ public class Customer_Form {
 
 
     public  void  loadtable(){
-        List<Customer> customerObservableList=Customer_Controller.getInstance().getAll();
-        tbl_customer.setItems((ObservableList) customerObservableList);
+        List<Customer> customerObservableList= customeService.getAll();
+        tbl_customer.setItems(FXCollections.observableArrayList(customerObservableList));
+    }
+
+    public void Report_Action(ActionEvent actionEvent) {
+        try {
+            JasperDesign design=JRXmlLoader.load("src/main/resources/Report/DailyReport.jrxml");
+            JasperReport jasperReport =JasperCompileManager.compileReport(design);
+            JasperPrint Jasperprint = JasperFillManager.fillReport(jasperReport,null,DBconnection.getInstance().getConnection());
+            JasperExportManager.exportReportToPdfFile(Jasperprint,"Customerpdf");
+            JasperViewer.viewReport(Jasperprint,false);
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

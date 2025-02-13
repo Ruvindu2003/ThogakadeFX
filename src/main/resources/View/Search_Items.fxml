@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="463.0" prefWidth="605.0" style="-fx-background-color: #1e272e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchItems">
+<AnchorPane prefHeight="463.0" prefWidth="605.0" style="-fx-background-color: #1e272e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchItems">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2d1f" height="94.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
       <Label layoutX="160.0" layoutY="9.0" prefHeight="62.0" prefWidth="290.0" text="Search Items">

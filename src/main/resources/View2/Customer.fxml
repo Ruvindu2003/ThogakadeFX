@@ -11,21 +11,21 @@
 
 <AnchorPane prefHeight="555.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customer.Customer_Form">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1fff" height="190.0" layoutX="-1.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="615.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1fff" height="108.0" layoutX="-1.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="636.0" />
       <Label layoutX="191.0" layoutY="34.0" prefHeight="84.0" prefWidth="310.0" text="Add customer">
          <font>
             <Font name="System Bold Italic" size="43.0" />
          </font>
       </Label>
-      <TextField fx:id="lbl_id" layoutX="41.0" layoutY="224.0" prefHeight="26.0" prefWidth="216.0" promptText="customer id" />
-      <TextField fx:id="lbl_name" layoutX="299.0" layoutY="230.0" prefHeight="26.0" prefWidth="216.0" promptText="customer name" />
-      <TextField fx:id="lbl_customer_Adrees" layoutX="28.0" layoutY="282.0" prefHeight="26.0" prefWidth="216.0" promptText="customer adreess" />
-      <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#Add_Customer_Action" text="AdddCustomer" />
-      <Button layoutX="365.0" layoutY="336.0" mnemonicParsing="false" onAction="#update_customer_Action" prefHeight="30.0" prefWidth="124.0" text="Update customer" />
-      <Button layoutX="230.0" layoutY="336.0" mnemonicParsing="false" onAction="#search_Customer_Action" prefHeight="30.0" prefWidth="124.0" text="Search customer" />
-      <Button layoutX="118.0" layoutY="336.0" mnemonicParsing="false" onAction="#View_Customer_Action" prefHeight="30.0" prefWidth="104.0" text="ViewCustomer" />
-      <Button layoutX="501.0" layoutY="336.0" mnemonicParsing="false" onAction="#Delete_customer_Action" prefHeight="30.0" prefWidth="114.0" text="Delete customer" />
-      <TableView fx:id="tbl_customer" layoutX="4.0" layoutY="373.0" prefHeight="182.0" prefWidth="588.0">
+      <TextField fx:id="lbl_id" layoutX="28.0" layoutY="137.0" prefHeight="26.0" prefWidth="216.0" promptText="customer id" />
+      <TextField fx:id="lbl_name" layoutX="285.0" layoutY="150.0" prefHeight="26.0" prefWidth="216.0" promptText="customer name" />
+      <TextField fx:id="lbl_customer_Adrees" layoutX="18.0" layoutY="209.0" prefHeight="26.0" prefWidth="216.0" promptText="customer adreess" />
+      <Button layoutY="261.0" mnemonicParsing="false" onAction="#Add_Customer_Action" text="AdddCustomer" />
+      <Button layoutX="377.0" layoutY="261.0" mnemonicParsing="false" onAction="#update_customer_Action" prefHeight="30.0" prefWidth="124.0" text="Update customer" />
+      <Button layoutX="245.0" layoutY="261.0" mnemonicParsing="false" onAction="#search_Customer_Action" prefHeight="30.0" prefWidth="124.0" text="Search customer" />
+      <Button layoutX="126.0" layoutY="261.0" mnemonicParsing="false" onAction="#View_Customer_Action" prefHeight="30.0" prefWidth="104.0" text="ViewCustomer" />
+      <Button layoutX="510.0" layoutY="261.0" mnemonicParsing="false" onAction="#Delete_customer_Action" prefHeight="30.0" prefWidth="114.0" text="Delete customer" />
+      <TableView fx:id="tbl_customer" layoutX="23.0" layoutY="372.0" prefHeight="182.0" prefWidth="588.0">
         <columns>
           <TableColumn fx:id="colum_id" prefWidth="173.59997254610062" text="customer id" />
           <TableColumn fx:id="colum_name" prefWidth="120.79998779296875" text="customer name" />
@@ -33,6 +33,7 @@
             <TableColumn fx:id="colum_salary" prefWidth="234.40011596679688" text="customer salary" />
         </columns>
       </TableView>
-      <TextField fx:id="customer_salary1" layoutX="299.0" layoutY="295.0" prefHeight="26.0" prefWidth="216.0" promptText="customer salary" />
+      <TextField fx:id="customer_salary1" layoutX="285.0" layoutY="209.0" prefHeight="26.0" prefWidth="216.0" promptText="customer salary" />
+      <Button layoutX="259.0" layoutY="320.0" mnemonicParsing="false" onAction="#Report_Action" text="Report" />
    </children>
 </AnchorPane>

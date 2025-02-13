@@ -1,6 +1,6 @@
 package Rejeister;
 
-import Controller.DBconnection;
+import controller.DBconnection;
 import modle.Login;
 
 import java.sql.PreparedStatement;

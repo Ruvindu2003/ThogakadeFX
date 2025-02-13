@@ -1,6 +1,6 @@
 package Login;
 
-import Controller.DBconnection;
+import controller.DBconnection;
 import modle.Login;
 
 import java.sql.Connection;

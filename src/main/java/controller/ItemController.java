@@ -1,15 +1,13 @@
-package Controller;
+package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import lombok.Getter;
 import modle.Items;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
 public class ItemController implements ItemService {
   private static ItemController itemController;
 

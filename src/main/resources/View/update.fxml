@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffdd59;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UpdateItems">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffdd59;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateItems">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f21fff" height="84.0" stroke="BLACK" strokeType="INSIDE" width="601.0" />
       <Label layoutX="169.0" layoutY="15.0" prefHeight="54.0" prefWidth="242.0" text="Update Items" textFill="#1f1111cd">

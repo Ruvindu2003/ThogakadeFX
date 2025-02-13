@@ -1,6 +1,6 @@
 package Orders;
 
-import Controller.DBconnection;
+import controller.DBconnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

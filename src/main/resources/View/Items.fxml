@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="762.0" stylesheets="@../table%20css/css/item.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemForm">
+<AnchorPane prefHeight="434.0" prefWidth="762.0" stylesheets="@../table%20css/css/item.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemForm">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bbaeb" height="160.0" layoutY="-19.0" stroke="BLACK" strokeType="INSIDE" width="763.0" />
       <Label layoutX="170.0" prefHeight="139.0" prefWidth="330.0" text="Add Items">

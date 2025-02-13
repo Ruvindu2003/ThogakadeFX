@@ -1,9 +1,11 @@
 package Orders;
 
-import Controller.DBconnection;
-import Controller.ItemController;
+import controller.DBconnection;
+import controller.ItemController;
+import service.ServiceFactory;
+import service.custome.CustomeService;
+import Util.Service_Type;
 import customer.Customer;
-import customer.Customer_Controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -25,7 +27,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Order_Form implements Initializable {
@@ -49,7 +50,7 @@ public class Order_Form implements Initializable {
     public TextField txt_tqqq;
     public TextField txt_orid;
 
-
+   CustomeService customerService= ServiceFactory.getInstance().getServiceType(Service_Type.Customer);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         col_itemcode.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
@@ -99,7 +100,7 @@ public class Order_Form implements Initializable {
     public void setCustomerid() {
         ObservableList<String> customerobserverlist = FXCollections.observableArrayList();
 
-        for (Customer customer : Customer_Controller.getInstance().getAll()) {
+        for (Customer customer : customerService.getAll()) {
             customerobserverlist.add(customer.getId());
         }
 
@@ -146,7 +147,7 @@ public class Order_Form implements Initializable {
     }
 
     private void setCustomerData(String id) {
-        Customer customer = Customer_Controller.getInstance().searchItem(id);
+        Customer customer = customerService.searchItem(id);
         txt_Adrees.setText(customer.getAdress());
         txt_Salary.setText(customer.getSalary().toString());
 
